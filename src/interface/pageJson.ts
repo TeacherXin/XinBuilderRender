@@ -3,9 +3,14 @@ import { buttonJson } from "./buttonJson"
 import { cardJson } from "./cardJson"
 import { carouselJson } from "./carouselJson"
 import { divJson } from "./divJson"
+import { flexJson } from "./flexJson"
 import { formJson } from "./formJson"
 import { inputJson } from "./inputJson"
+import { listitemJson } from "./listitemJson"
+import { listJson } from "./listJson"
 import { menuJson } from "./menuJson"
+import { radiogroupJson } from "./radiogroupJson"
+import { radioJson } from "./radioJson"
 
 export interface PageJsonComponent {
   children?: Array<ReactNode>
@@ -40,5 +45,6 @@ export interface PageJsonComponent {
 }
 
 export interface PageJson {
-  [key: string]:  buttonJson | cardJson | formJson | inputJson | carouselJson | divJson | menuJson
+  [key: string]:  buttonJson | cardJson | formJson | inputJson | carouselJson | divJson | menuJson | radiogroupJson | radioJson
+  | flexJson | listitemJson | listJson
 }

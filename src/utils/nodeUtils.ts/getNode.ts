@@ -1,6 +1,9 @@
 import { PageJson, PageJsonComponent } from "../../interface/pageJson";
 
-const findNodeByComId = (id: string,nodeList: PageJson | undefined): PageJsonComponent | any => {
+const findNodeByComId = (id: string,nodeList?: PageJson | undefined): PageJsonComponent | any => {
+  if(!nodeList) {
+    return null
+  }
   let node;
   const dfs = (id: string,nodeList: PageJson | undefined) => {
     for(let propName in nodeList){

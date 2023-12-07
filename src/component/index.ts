@@ -6,6 +6,11 @@ import XinCarousel from './XinCarousel'
 import XinDiv from './XinDiv'
 import XinMenu from './XinMenu'
 import XinLable from './XinLabel'
+import XinRadioGroup from './XinRadioGroup'
+import XinRadio from './XinRadio'
+import XinFlex from './XinFlex'
+import XinList from './XinList'
+import XinListItem from './XinListItem'
 export {
   XinButton,
   XinInput,
@@ -14,5 +19,10 @@ export {
   XinCarousel,
   XinDiv,
   XinMenu,
-  XinLable
+  XinLable,
+  XinRadioGroup,
+  XinRadio,
+  XinFlex,
+  XinList,
+  XinListItem
 }
