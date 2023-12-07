@@ -11,6 +11,11 @@ import XinRadio from './XinRadio'
 import XinFlex from './XinFlex'
 import XinList from './XinList'
 import XinListItem from './XinListItem'
+import XinTabs from './XinTabs'
+import XinCheckBox from './XinCheckBox'
+import XinIcon from './XinIcon'
+import XinNumber from './XinNumber'
+import XinRate from './XinRate'
 export {
   XinButton,
   XinInput,
@@ -24,5 +29,10 @@ export {
   XinRadio,
   XinFlex,
   XinList,
-  XinListItem
+  XinListItem,
+  XinTabs,
+  XinCheckBox,
+  XinIcon,
+  XinNumber,
+  XinRate
 }
