@@ -2,10 +2,12 @@ import React from 'react'
 import { Radio } from 'antd'
 import { radioJson } from '../../interface/radioJson'
 import useEffectStyle from '../../utils/componetUtils/useEffectStyle'
+import useStateValue from '../../utils/componetUtils/useStateValue'
 
 export default function XinRadio(props: radioJson) {
   const {attributeValue, actionJs, styleCss, disabled, checked, comId, visible} = props
   const style = useEffectStyle(styleCss);
+  const state = useStateValue({attributeValue, disabled, checked, visible}, comId)
 
   const onClick = (e: React.MouseEvent<HTMLElement,MouseEvent>) => {
     // eslint-disable-next-line no-new-func
@@ -21,16 +23,16 @@ export default function XinRadio(props: radioJson) {
 
 
   return (
-    <div style={{display: visible ? 'none':'block'}}>
+    <div style={{display: state.visible ? 'none':'block'}}>
       <Radio
-        checked={checked}
-        disabled={disabled}
+        checked={state.checked}
+        disabled={state.disabled}
         style={style}
         onClick={onClick}
         onChange={onChange}
         value={comId}
       >
-        {attributeValue || 'Radio'}
+        {state.attributeValue || 'Radio'}
       </Radio>
     </div>
   )

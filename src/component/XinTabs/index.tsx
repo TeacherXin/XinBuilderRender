@@ -3,6 +3,7 @@ import { Tabs } from 'antd';
 import { tabsJson } from '../../interface/tabsJson';
 import useEffectStyle from '../../utils/componetUtils/useEffectStyle';
 import { findNodeByComId } from '../../utils/nodeUtils.ts/getNode';
+import useStateValue from '../../utils/componetUtils/useStateValue';
 
 export default function XinTabs(props: tabsJson) {
   const {
@@ -14,10 +15,12 @@ export default function XinTabs(props: tabsJson) {
     size,
     tabPosition,
     tabBarGutter,
-    tabsType
+    tabsType,
+    comId
   } = props
   const [items, setItems] = useState<{ key: string; label: any; children: any; }[]>([])
   const style = useEffectStyle(styleCss)
+  const state = useStateValue({activeKey, animated, centered, size, tabBarGutter, tabPosition, tabsType}, comId)
 
   useEffect(() => {
     const children = props.children || [];
@@ -43,13 +46,13 @@ export default function XinTabs(props: tabsJson) {
       <Tabs
         style={style}
         items={items}
-        activeKey={activeKey}
-        animated={animated}
-        centered={centered}
-        size={size}
-        tabPosition={tabPosition}
-        tabBarGutter={parseInt(tabBarGutter || '50')}
-        type={tabsType}
+        activeKey={state.activeKey}
+        animated={state.animated}
+        centered={state.centered}
+        size={state.size}
+        tabPosition={state.tabPosition}
+        tabBarGutter={parseInt(state.tabBarGutter || '50')}
+        type={state.tabsType}
         onChange={onChange}
       />
     </div>

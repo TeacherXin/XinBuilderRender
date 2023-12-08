@@ -1,6 +1,7 @@
 import {Form } from 'antd';
 import useEffectStyle from '../../utils/componetUtils/useEffectStyle';
 import { formJson } from '../../interface/formJson';
+import useStateValue from '../../utils/componetUtils/useStateValue';
 
 export default function XinForm(props: formJson) {
   const {
@@ -11,13 +12,15 @@ export default function XinForm(props: formJson) {
     colon,
     labelAlign,
     visible,
-    childList
+    childList,
+    comId
   } = props
 
   const style = useEffectStyle(styleCss)
+  const state = useStateValue({disabled, size, layout, colon, labelAlign, visible}, comId)
 
   return (
-    <div style={{display: visible ? 'none':'block'}}>
+    <div style={{display: state.visible ? 'none':'block'}}>
       <Form
         labelCol={{
           span: 8,
@@ -26,11 +29,11 @@ export default function XinForm(props: formJson) {
           span: 16,
         }}
         style={style}
-        disabled={disabled}
-        size={size}
-        layout={layout}
-        colon={colon}
-        labelAlign={labelAlign}
+        disabled={state.disabled}
+        size={state.size}
+        layout={state.layout}
+        colon={state.colon}
+        labelAlign={state.labelAlign}
       >
           {(props?.children || []).map(item => {
             const comId = item?.['key' as keyof typeof item] || ''

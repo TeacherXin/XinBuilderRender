@@ -5,6 +5,7 @@ import './index.css'
 import { Input } from 'antd'
 import useEffectStyle from '../../utils/componetUtils/useEffectStyle';
 import { inputJson } from '../../interface/inputJson';
+import useStateValue from '../../utils/componetUtils/useStateValue';
 
 export default function XinInput(props: inputJson) {
   const {
@@ -19,12 +20,14 @@ export default function XinInput(props: inputJson) {
     suffix,
     allowClear,
     showCount,
-    visible
+    visible,
+    comId
   } = props
   const [value,setValue] = useState<string | number | undefined>('');
   const [InputComponent, setInputComponent] = useState<any>(Input);
 
   const style = useEffectStyle(styleCss);
+  const state = useStateValue({attributeValue, addonAfter, addonBefore, placeholder, size, prefix, suffix, allowClear, showCount, visible}, comId)
 
   useEffect(() => {
     if(props.inputType === 'text'){
@@ -50,18 +53,18 @@ export default function XinInput(props: inputJson) {
   }
 
   return (
-    <div style={{display: visible ? 'none':'block'}} className='componentInput'>
+    <div style={{display: state.visible ? 'none':'block'}} className='componentInput'>
       <InputComponent
-        size={size}
-        prefix={prefix}
-        suffix={suffix}
-        addonBefore={addonBefore}
-        addonAfter={addonAfter}
-        allowClear={allowClear}
-        showCount={showCount}
+        size={state.size}
+        prefix={state.prefix}
+        suffix={state.suffix}
+        addonBefore={state.addonBefore}
+        addonAfter={state.addonAfter}
+        allowClear={state.allowClear}
+        showCount={state.showCount}
         value={value || ''}
         onChange={onChange}
-        placeholder={placeholder}
+        placeholder={state.placeholder}
         style={style}
       />
     </div>

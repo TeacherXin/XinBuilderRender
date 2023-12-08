@@ -4,12 +4,14 @@ import './index.css'
 import { listJson } from '../../interface/listJson';
 import useEffectStyle from '../../utils/componetUtils/useEffectStyle';
 import { findNodeByComId } from '../../utils/nodeUtils.ts/getNode';
+import useStateValue from '../../utils/componetUtils/useStateValue';
 
 export default function XinList(props: listJson) {
-  const { styleCss, children, bordered, size, actionJs } = props;
+  const { styleCss, children, bordered, size, actionJs, comId } = props;
   // list组件的data
   const [data, setData] = useState<{[key: string]: string}[]| undefined>(undefined)
   const style = useEffectStyle(styleCss)
+  const state = useStateValue({bordered, size}, comId)
 
   useEffect(() => {
     // eslint-disable-next-line no-new-func
@@ -34,8 +36,8 @@ export default function XinList(props: listJson) {
         style={style}
         itemLayout="vertical"
         dataSource={data}
-        bordered={bordered}
-        size={size}
+        bordered={state.bordered}
+        size={state.size}
       >
         {
           (children || []).map((item, index) => (

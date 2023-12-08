@@ -1,10 +1,12 @@
 import { Carousel } from 'antd'
 import useEffectStyle from '../../utils/componetUtils/useEffectStyle'
 import { carouselJson } from '../../interface/carouselJson';
+import useStateValue from '../../utils/componetUtils/useStateValue';
 
 export default function XinCarousel(props: carouselJson) {
-  const { styleCss, visible, autoplay, actionJs} = props;
+  const { styleCss, visible, autoplay, actionJs, comId} = props;
   const style = useEffectStyle(styleCss);
+  const state = useStateValue({ visible, autoplay }, comId)
 
   const onChange = (value: number) => {
     // eslint-disable-next-line no-new-func
@@ -13,9 +15,9 @@ export default function XinCarousel(props: carouselJson) {
   }
 
   return (
-    <div style={{display:visible? 'none':'block',...style}}>
+    <div style={{display:state.visible? 'none':'block',...style}}>
       <Carousel
-        autoplay={autoplay}
+        autoplay={state.autoplay}
         afterChange={onChange}
       >
         {(props?.children || []).map(item => {

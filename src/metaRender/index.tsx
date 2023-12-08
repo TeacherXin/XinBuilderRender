@@ -4,6 +4,7 @@ import { findNodeByComId } from '../utils/nodeUtils.ts/getNode'
 import * as myComponent from '../component'
 import { message } from 'antd'
 import axios from 'axios'
+import { moduleCpmputed } from './modalComputed'
 
 
 export default function MetaRender(props: {pageJson: PageJson}) {
@@ -17,6 +18,7 @@ export default function MetaRender(props: {pageJson: PageJson}) {
     }).then(res => {
       if(res.data.data) {
         setPageJson(res.data.data.pageJson)
+        moduleCpmputed(res.data.data.pageJson)
       }else{
         message.error('页面查询失败')
       }

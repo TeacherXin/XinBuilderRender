@@ -16,6 +16,7 @@ import XinCheckBox from './XinCheckBox'
 import XinIcon from './XinIcon'
 import XinNumber from './XinNumber'
 import XinRate from './XinRate'
+import XinAvatar from './XinAvatar'
 export {
   XinButton,
   XinInput,
@@ -34,5 +35,6 @@ export {
   XinCheckBox,
   XinIcon,
   XinNumber,
-  XinRate
+  XinRate,
+  XinAvatar
 }
